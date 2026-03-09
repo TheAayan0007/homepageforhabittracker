@@ -21,6 +21,7 @@
   --text-faint: #2a3347;
   --red: #ff4f6a;
   --blue: #4fa3ff;
+  --blue-dim: #0d2240;
   --gold: #ffc842;
   --r: 12px;
 }
@@ -49,12 +50,16 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 .hero-pills{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:28px;position:relative;z-index:2;animation:fadeDown .7s ease .3s both;}
 .pill{padding:8px 20px;border-radius:100px;border:1px solid var(--border);background:var(--surface2);color:var(--text-dim);font-size:13px;font-weight:500;cursor:pointer;transition:all .25s cubic-bezier(.34,1.56,.64,1);}
 .pill:hover{border-color:var(--green);color:var(--green);background:var(--green-dim);transform:translateY(-2px) scale(1.04);box-shadow:0 8px 24px rgba(57,255,138,.15);}
+.pill.blue-pill{border-color:#1e3a5f;background:var(--blue-dim);color:var(--blue);}
+.pill.blue-pill:hover{border-color:var(--blue);color:#fff;background:rgba(79,163,255,.15);box-shadow:0 8px 24px rgba(79,163,255,.15);}
 .hero-links{display:flex;gap:12px;margin-top:32px;position:relative;z-index:2;animation:fadeDown .7s ease .4s both;flex-wrap:wrap;justify-content:center;}
 .hero-btn{padding:12px 28px;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;transition:all .2s cubic-bezier(.34,1.56,.64,1);text-decoration:none;display:inline-flex;align-items:center;gap:8px;border:none;}
 .hero-btn.primary{background:var(--green);color:#000;}
 .hero-btn.primary:hover{background:#fff;transform:translateY(-3px) scale(1.04);box-shadow:0 12px 32px rgba(57,255,138,.3);}
 .hero-btn.secondary{background:var(--surface2);color:var(--text);border:1px solid var(--border);}
 .hero-btn.secondary:hover{border-color:var(--green);color:var(--green);transform:translateY(-3px);box-shadow:0 8px 20px rgba(0,0,0,.4);}
+.hero-btn.google-btn{background:rgba(66,133,244,.1);color:var(--blue);border:1px solid #1e3a5f;}
+.hero-btn.google-btn:hover{background:rgba(66,133,244,.2);border-color:var(--blue);transform:translateY(-3px);}
 .scroll-hint{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;color:var(--text-faint);font-size:11px;letter-spacing:2px;text-transform:uppercase;animation:fadeDown .7s ease .8s both;z-index:2;}
 .scroll-arrow{width:20px;height:20px;border-right:2px solid var(--text-faint);border-bottom:2px solid var(--text-faint);transform:rotate(45deg);animation:scrollBounce 1.5s ease infinite;}
 @keyframes scrollBounce{0%,100%{transform:rotate(45deg) translateY(0);}50%{transform:rotate(45deg) translateY(6px);}}
@@ -64,22 +69,82 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 .wrap{max-width:1100px;margin:0 auto;padding:0 24px;}
 section{padding:80px 0;position:relative;z-index:1;}
 .sec-label{font-family:'Space Mono',monospace;font-size:10px;color:var(--green);letter-spacing:3px;text-transform:uppercase;margin-bottom:10px;}
+.sec-label.blue{color:var(--blue);}
 .sec-title{font-size:clamp(28px,4vw,48px);font-weight:800;letter-spacing:-1.5px;line-height:1.1;}
 .sec-title .g{color:var(--green);}
+.sec-title .b{color:var(--blue);}
 .sec-sub{font-size:15px;color:var(--text-dim);font-weight:300;margin-top:12px;line-height:1.7;max-width:600px;}
 .divider{height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent);margin:0;}
 
 /* ── FEATURES GRID ── */
 .features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:48px;}
-.feat-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:28px 24px;position:relative;overflow:hidden;cursor:pointer;transition:all .3s cubic-bezier(.34,1.2,.64,1);group:true;}
+.feat-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:28px 24px;position:relative;overflow:hidden;cursor:pointer;transition:all .3s cubic-bezier(.34,1.2,.64,1);}
 .feat-card::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 0%,var(--green-glow),transparent 70%);opacity:0;transition:opacity .3s;}
 .feat-card:hover{border-color:rgba(57,255,138,.5);transform:translateY(-6px) scale(1.01);box-shadow:0 20px 48px rgba(0,0,0,.5),0 0 0 1px rgba(57,255,138,.1);}
 .feat-card:hover::before{opacity:1;}
+.feat-card.blue-card::before{background:radial-gradient(circle at 50% 0%,rgba(79,163,255,.12),transparent 70%);}
+.feat-card.blue-card:hover{border-color:rgba(79,163,255,.5);box-shadow:0 20px 48px rgba(0,0,0,.5),0 0 0 1px rgba(79,163,255,.1);}
 .feat-icon{font-size:32px;margin-bottom:16px;display:block;transition:transform .3s cubic-bezier(.34,1.56,.64,1);}
 .feat-card:hover .feat-icon{transform:scale(1.2) rotate(-5deg);}
 .feat-name{font-size:17px;font-weight:700;margin-bottom:8px;}
 .feat-desc{font-size:13px;color:var(--text-dim);line-height:1.6;}
 .feat-tag{display:inline-block;margin-top:12px;padding:3px 10px;background:var(--green-dim);border:1px solid var(--green);border-radius:100px;font-size:10px;font-family:'Space Mono',monospace;color:var(--green);letter-spacing:.5px;}
+.feat-tag.blue-tag{background:var(--blue-dim);border-color:var(--blue);color:var(--blue);}
+
+/* ── GOOGLE DRIVE BANNER ── */
+.drive-banner{
+  background:linear-gradient(135deg, #0a1220 0%, #0d1e35 50%, #0a1220 100%);
+  border:1px solid #1e3a5f;
+  border-radius:20px;
+  padding:40px;
+  margin-top:56px;
+  position:relative;
+  overflow:hidden;
+}
+.drive-banner::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at 30% 50%, rgba(79,163,255,.07) 0%, transparent 60%),
+             radial-gradient(ellipse at 70% 50%, rgba(57,255,138,.05) 0%, transparent 60%);
+  pointer-events:none;
+}
+.drive-banner-inner{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;position:relative;z-index:1;}
+.drive-banner-left{}
+.drive-banner-label{font-family:'Space Mono',monospace;font-size:10px;color:var(--blue);letter-spacing:3px;text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+.drive-banner-label::before{content:'';width:20px;height:1px;background:var(--blue);}
+.drive-banner-title{font-size:clamp(24px,3vw,36px);font-weight:800;letter-spacing:-1px;line-height:1.1;margin-bottom:14px;}
+.drive-banner-title .b{color:var(--blue);}
+.drive-banner-title .g{color:var(--green);}
+.drive-banner-desc{font-size:14px;color:var(--text-dim);line-height:1.7;margin-bottom:24px;}
+.drive-btn{display:inline-flex;align-items:center;gap:10px;padding:12px 24px;border-radius:10px;background:rgba(66,133,244,.12);border:1px solid #1e3a5f;color:var(--blue);font-size:14px;font-weight:700;cursor:pointer;text-decoration:none;transition:all .2s;}
+.drive-btn:hover{background:rgba(66,133,244,.22);border-color:var(--blue);transform:translateY(-2px);box-shadow:0 8px 24px rgba(79,163,255,.2);}
+.drive-banner-right{}
+.drive-steps{display:flex;flex-direction:column;gap:12px;}
+.drive-step{display:flex;align-items:flex-start;gap:14px;padding:14px 16px;background:rgba(255,255,255,.03);border:1px solid rgba(79,163,255,.12);border-radius:12px;transition:all .25s;}
+.drive-step:hover{background:rgba(79,163,255,.07);border-color:rgba(79,163,255,.3);transform:translateX(4px);}
+.ds-num{width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#1d4ed8,#3b82f6);color:#fff;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
+.ds-content{}
+.ds-title{font-size:13px;font-weight:700;margin-bottom:3px;}
+.ds-desc{font-size:11px;color:var(--text-dim);line-height:1.5;}
+
+/* ── SYNC DIAGRAM ── */
+.sync-diagram{margin-top:48px;background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:32px;position:relative;overflow:hidden;}
+.sync-diagram::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(79,163,255,.05),transparent 60%);}
+.sd-title{font-family:'Space Mono',monospace;font-size:12px;color:var(--text-dim);text-align:center;margin-bottom:28px;letter-spacing:1px;position:relative;z-index:1;}
+.sd-flow{display:flex;align-items:center;justify-content:center;gap:0;flex-wrap:wrap;position:relative;z-index:1;}
+.sd-node{display:flex;flex-direction:column;align-items:center;gap:8px;padding:16px 20px;background:var(--surface2);border:1px solid var(--border);border-radius:12px;min-width:110px;transition:all .3s;cursor:default;}
+.sd-node:hover{border-color:var(--blue);transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,.4);}
+.sd-node.drive-node{border-color:#1e3a5f;background:rgba(13,34,64,.6);}
+.sd-node.drive-node:hover{border-color:var(--blue);}
+.sd-icon{font-size:24px;}
+.sd-label{font-size:11px;font-weight:700;text-align:center;}
+.sd-sub{font-size:9px;color:var(--text-faint);font-family:'Space Mono',monospace;text-align:center;}
+.sd-arrow{display:flex;flex-direction:column;align-items:center;gap:4px;padding:0 8px;}
+.sd-line{width:48px;height:2px;background:linear-gradient(90deg,var(--border),var(--blue),var(--border));border-radius:1px;position:relative;overflow:hidden;}
+.sd-line::after{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,var(--green),transparent);animation:flowLine 2s linear infinite;}
+@keyframes flowLine{from{left:-100%;}to{left:100%;}}
+.sd-arrow-icon{font-size:10px;color:var(--blue);}
+.sd-realtime{text-align:center;margin-top:16px;font-size:11px;color:var(--text-dim);font-family:'Space Mono',monospace;}
+.sd-realtime span{color:var(--green);}
 
 /* ── DEMO WINDOW ── */
 .demo-wrap{margin-top:56px;}
@@ -119,6 +184,29 @@ section{padding:80px 0;position:relative;z-index:1;}
 .task-txt{font-size:13px;flex:1;}
 .task-txt.done{text-decoration:line-through;color:var(--text-dim);}
 
+/* Drive demo screen */
+.drive-demo-screen{display:flex;flex-direction:column;gap:12px;}
+.dd-topbar{display:flex;align-items:center;gap:8px;padding:8px 12px;background:var(--surface2);border:1px solid var(--border);border-radius:10px;}
+.dd-logo{font-family:'Space Mono',monospace;font-size:13px;color:var(--green);font-weight:700;}
+.dd-spacer{flex:1;}
+.dd-status{display:flex;align-items:center;gap:6px;font-family:'Space Mono',monospace;font-size:10px;color:var(--blue);padding:4px 10px;background:var(--blue-dim);border:1px solid #1e3a5f;border-radius:6px;}
+.dd-status-dot{width:6px;height:6px;border-radius:50%;background:var(--blue);animation:blinkDot 1s ease infinite;}
+.dd-save-wrap{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.dd-option{padding:14px 16px;background:var(--surface2);border-radius:10px;border:1px solid var(--border);cursor:pointer;transition:all .2s;}
+.dd-option:hover{border-color:var(--blue);background:rgba(79,163,255,.05);}
+.dd-option.green:hover{border-color:var(--green);background:var(--green-dim);}
+.dd-option-icon{font-size:20px;margin-bottom:6px;}
+.dd-option-title{font-size:13px;font-weight:700;margin-bottom:2px;}
+.dd-option-sub{font-size:10px;color:var(--text-faint);}
+.dd-accounts{display:flex;flex-direction:column;gap:6px;}
+.dd-acct{display:flex;align-items:center;gap:10px;padding:10px 14px;background:var(--surface2);border:1px solid var(--border);border-radius:10px;}
+.dd-acct.active{background:var(--blue-dim);border-color:#1e3a5f;}
+.dd-avatar{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,#1d4ed8,#7c3aed);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:#fff;flex-shrink:0;}
+.dd-acct-name{font-size:12px;font-weight:600;}
+.dd-acct-email{font-size:10px;color:var(--text-dim);}
+.dd-acct-check{margin-left:auto;color:var(--green);font-size:13px;}
+.dd-sync-status{padding:10px 14px;background:rgba(57,255,138,.05);border:1px solid var(--green-dim);border-radius:8px;display:flex;align-items:center;gap:8px;font-size:11px;color:var(--green);}
+
 /* JSON viewer */
 .json-block{background:#0a0d12;border:1px solid var(--border);border-radius:10px;padding:20px;font-family:'Space Mono',monospace;font-size:11px;line-height:1.8;overflow-x:auto;}
 .jk{color:#60a5fa;}.jv{color:var(--green);}.js{color:#fb923c;}.jn{color:#a78bfa;}
@@ -138,18 +226,21 @@ section{padding:80px 0;position:relative;z-index:1;}
 .json-share{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:48px;}
 .jcard{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:28px;transition:all .3s;}
 .jcard:hover{border-color:rgba(57,255,138,.4);box-shadow:0 12px 40px rgba(0,0,0,.4);}
+.jcard.blue-card:hover{border-color:rgba(79,163,255,.4);}
 .jcard-icon{font-size:36px;margin-bottom:14px;}
 .jcard-title{font-size:18px;font-weight:700;margin-bottom:8px;}
 .jcard-desc{font-size:13px;color:var(--text-dim);line-height:1.65;}
 .jcard-steps{margin-top:14px;display:flex;flex-direction:column;gap:8px;}
 .jstep{display:flex;align-items:flex-start;gap:10px;font-size:12px;}
 .jstep-n{width:20px;height:20px;border-radius:50%;background:var(--green-dim);border:1px solid var(--green);color:var(--green);font-family:'Space Mono',monospace;font-size:9px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
+.jstep-n.blue{background:var(--blue-dim);border-color:var(--blue);color:var(--blue);}
 .jstep-t{color:var(--text-dim);line-height:1.5;}
 
 /* ── USAGE GUIDE ── */
 .usage-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:48px;}
 .ug-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;overflow:hidden;transition:all .3s;}
 .ug-card:hover{border-color:rgba(57,255,138,.4);transform:translateY(-4px);box-shadow:0 16px 48px rgba(0,0,0,.5);}
+.ug-card.blue-ug:hover{border-color:rgba(79,163,255,.4);}
 .ug-head{padding:16px 20px;background:var(--surface2);border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px;}
 .ug-icon{font-size:20px;}
 .ug-title{font-size:14px;font-weight:700;}
@@ -158,6 +249,7 @@ section{padding:80px 0;position:relative;z-index:1;}
 .ug-step:last-child{border-bottom:none;}
 .ug-step b{color:var(--text);font-weight:600;}
 .kbd{display:inline-block;padding:1px 6px;background:var(--surface3);border:1px solid var(--border);border-radius:4px;font-family:'Space Mono',monospace;font-size:10px;color:var(--green);}
+.kbd.blue{color:var(--blue);}
 
 /* ── LIVE DEMO MINI-APP ── */
 .live-demo{background:var(--surface);border:1px solid var(--border);border-radius:16px;overflow:hidden;margin-top:48px;}
@@ -196,9 +288,29 @@ section{padding:80px 0;position:relative;z-index:1;}
 .benefit-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:48px;}
 .benefit{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:24px;display:flex;gap:16px;transition:all .3s;}
 .benefit:hover{border-color:rgba(57,255,138,.35);transform:translateX(4px);box-shadow:-4px 0 20px rgba(57,255,138,.08);}
+.benefit.blue-benefit:hover{border-color:rgba(79,163,255,.35);box-shadow:-4px 0 20px rgba(79,163,255,.08);}
 .benefit-ico{font-size:28px;flex-shrink:0;}
 .benefit-name{font-size:15px;font-weight:700;margin-bottom:6px;}
 .benefit-desc{font-size:13px;color:var(--text-dim);line-height:1.6;}
+
+/* ── GOOGLE DRIVE HOW-TO ── */
+.gdrive-howto{background:var(--surface);border:1px solid #1e3a5f;border-radius:16px;overflow:hidden;margin-top:48px;}
+.gdrive-howto-head{background:linear-gradient(135deg,#0a1220,#0d1e35);padding:20px 28px;border-bottom:1px solid #1e3a5f;display:flex;align-items:center;gap:14px;}
+.gdrive-logo{display:flex;gap:4px;align-items:center;}
+.gdrive-logo svg{width:28px;height:28px;}
+.gdrive-howto-title{font-size:18px;font-weight:800;}
+.gdrive-howto-sub{font-size:12px;color:var(--text-dim);margin-top:2px;}
+.gdrive-howto-body{padding:28px;display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+.gdrive-col-title{font-family:'Space Mono',monospace;font-size:10px;color:var(--blue);letter-spacing:2px;text-transform:uppercase;margin-bottom:14px;}
+.gdrive-step-list{display:flex;flex-direction:column;gap:10px;}
+.gdrive-step{display:flex;align-items:flex-start;gap:12px;padding:12px 14px;background:rgba(79,163,255,.04);border:1px solid rgba(79,163,255,.1);border-radius:10px;transition:all .2s;}
+.gdrive-step:hover{background:rgba(79,163,255,.09);border-color:rgba(79,163,255,.25);transform:translateX(3px);}
+.gdrive-step-num{width:24px;height:24px;border-radius:50%;background:linear-gradient(135deg,#1d4ed8,#3b82f6);color:#fff;font-family:'Space Mono',monospace;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
+.gdrive-step-content{flex:1;}
+.gdrive-step-title{font-size:12px;font-weight:700;margin-bottom:2px;}
+.gdrive-step-desc{font-size:11px;color:var(--text-dim);line-height:1.5;}
+.gdrive-note{margin-top:14px;padding:12px 16px;background:rgba(57,255,138,.04);border:1px solid var(--green-dim);border-radius:8px;font-size:11px;color:var(--text-dim);line-height:1.6;}
+.gdrive-note strong{color:var(--green);}
 
 /* ── FOOTER ── */
 footer{background:var(--surface);border-top:1px solid var(--border);padding:48px 24px;text-align:center;position:relative;z-index:1;}
@@ -216,6 +328,12 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:48px
 .reveal-right{opacity:0;transform:translateX(28px);transition:opacity .6s ease,transform .6s ease;}
 .reveal-right.in{opacity:1;transform:translateX(0);}
 
+@media(max-width:900px){
+  .drive-banner-inner{grid-template-columns:1fr;}
+  .gdrive-howto-body{grid-template-columns:1fr;}
+  .sd-flow{gap:8px;}
+  .sd-arrow{display:none;}
+}
 @media(max-width:768px){
   .features-grid{grid-template-columns:1fr 1fr;}
   .steps{grid-template-columns:1fr 1fr;gap:24px;}
@@ -236,23 +354,26 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:48px
 <section class="hero">
   <div class="hero-grid"></div>
   <div class="hero-orb"></div>
-  <div class="hero-badge"><span class="badge-dot"></span> Open Source · Free · No Ads</div>
+  <div class="hero-badge"><span class="badge-dot"></span> Open Source · Free · No Ads · Cloud Sync</div>
   <h1 class="hero-title">◈ <span class="accent">HABIT</span><span class="dim">TRACK</span></h1>
-  <p class="hero-sub">A blazing-fast, offline-first daily habit & task tracker. No sign-up. No servers. Just open, track, and win every single day.</p>
+  <p class="hero-sub">A blazing-fast daily habit & task tracker with real-time Google Drive sync. Track on your phone, check on your laptop — everything stays in sync, everywhere.</p>
   <div class="hero-pills">
     <div class="pill">📅 Monthly Grid</div>
     <div class="pill">📋 Weekly Tasks</div>
     <div class="pill">📊 Visual Charts</div>
     <div class="pill">⏱ Focus Timer</div>
-    <div class="pill">💾 JSON Portable</div>
+    <div class="pill blue-pill">☁ Google Drive Sync</div>
+    <div class="pill blue-pill">🔐 Any Google Account</div>
     <div class="pill">🎯 Habit Manager</div>
     <div class="pill">🔔 Alarm System</div>
-    <div class="pill">📵 No Account</div>
   </div>
   <div class="hero-links">
     <a href="https://habittracker-blond.vercel.app/" target="_blank" class="hero-btn primary">🚀 Launch App</a>
+    <a href="#drive" class="hero-btn google-btn">
+      <svg width="16" height="16" viewBox="0 0 18 18"><path fill="#4285F4" d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.717v2.258h2.908c1.702-1.567 2.684-3.875 2.684-6.615z"/><path fill="#34A853" d="M9 18c2.43 0 4.467-.806 5.956-2.18l-2.908-2.259c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332A8.997 8.997 0 009 18z"/><path fill="#FBBC05" d="M3.964 10.71A5.41 5.41 0 013.682 9c0-.593.102-1.17.282-1.71V4.958H.957A8.996 8.996 0 000 9c0 1.452.348 2.827.957 4.042l3.007-2.332z"/><path fill="#EA4335" d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0A8.997 8.997 0 00.957 4.958L3.964 7.29C4.672 5.163 6.656 3.58 9 3.58z"/></svg>
+      Drive Sync Guide
+    </a>
     <a href="#demo" class="hero-btn secondary">👀 See Demo</a>
-    <a href="#json" class="hero-btn secondary">💾 How to Save</a>
   </div>
   <div class="scroll-hint">Scroll to explore <div class="scroll-arrow"></div></div>
 </section>
@@ -265,7 +386,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:48px
     <div class="reveal">
       <div class="sec-label">Core Features</div>
       <h2 class="sec-title">Everything you need to <span class="g">build streaks</span></h2>
-      <p class="sec-sub">Built with pure HTML/CSS/JS. No frameworks, no build tools, no backend. Just open it and go.</p>
+      <p class="sec-sub">Pure HTML/CSS/JS with Google Drive integration. No heavy frameworks. Just open it, sign in, and go.</p>
     </div>
     <div class="features-grid">
       <div class="feat-card reveal">
@@ -298,11 +419,183 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:48px
         <div class="feat-desc">Global countdown timer with presets (5m–1h) or custom H:M:S input. Animated ring, pause/resume, sound alarm. Per-habit timers with clock alarms too.</div>
         <div class="feat-tag">Sound Alarm</div>
       </div>
-      <div class="feat-card reveal">
-        <span class="feat-icon">💾</span>
-        <div class="feat-name">Portable JSON Data</div>
-        <div class="feat-desc">All data stored in a single JSON file. Open, save, share across any device, browser, or computer. Zero cloud dependency. You own your data entirely.</div>
-        <div class="feat-tag">100% Offline</div>
+      <!-- NEW: Google Drive Card -->
+      <div class="feat-card blue-card reveal">
+        <span class="feat-icon">☁️</span>
+        <div class="feat-name">Google Drive Sync</div>
+        <div class="feat-desc">Sign in with Google and every change auto-saves to your Drive in real time. Open on any device and pick up exactly where you left off — phone, tablet, or desktop.</div>
+        <div class="feat-tag blue-tag">Real-time Sync</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══════════════ GOOGLE DRIVE SYNC SECTION ══════════════ -->
+<section id="drive">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="sec-label blue">Google Drive Sync</div>
+      <h2 class="sec-title">Track on <span class="b">any device</span>, always <span class="g">in sync</span></h2>
+      <p class="sec-sub">Sign in once with your Google account. Every habit you tick, every task you add — saved to your Drive automatically. Open the app on your phone and your laptop and they both show the same data.</p>
+    </div>
+
+    <!-- MAIN DRIVE BANNER -->
+    <div class="drive-banner reveal">
+      <div class="drive-banner-inner">
+        <div class="drive-banner-left">
+          <div class="drive-banner-label">How it works</div>
+          <div class="drive-banner-title">One file.<br><span class="b">Any device.</span><br><span class="g">Always synced.</span></div>
+          <div class="drive-banner-desc">Your entire tracker — habits, completions, tasks, streaks — lives in a single file called <code style="color:var(--green);font-size:13px;background:rgba(57,255,138,.08);padding:2px 6px;border-radius:4px;">habittrack-data.json</code> stored directly in your Google Drive. Every change syncs automatically within seconds. No manual saving needed.</div>
+          <a href="https://habittracker-blond.vercel.app/" target="_blank" class="drive-btn">
+            <svg width="16" height="16" viewBox="0 0 18 18"><path fill="#4285F4" d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.717v2.258h2.908c1.702-1.567 2.684-3.875 2.684-6.615z"/><path fill="#34A853" d="M9 18c2.43 0 4.467-.806 5.956-2.18l-2.908-2.259c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332A8.997 8.997 0 009 18z"/><path fill="#FBBC05" d="M3.964 10.71A5.41 5.41 0 013.682 9c0-.593.102-1.17.282-1.71V4.958H.957A8.996 8.996 0 000 9c0 1.452.348 2.827.957 4.042l3.007-2.332z"/><path fill="#EA4335" d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0A8.997 8.997 0 00.957 4.958L3.964 7.29C4.672 5.163 6.656 3.58 9 3.58z"/></svg>
+            Sign in & Start Syncing
+          </a>
+        </div>
+        <div class="drive-banner-right">
+          <div class="drive-steps">
+            <div class="drive-step">
+              <div class="ds-num">1</div>
+              <div class="ds-content">
+                <div class="ds-title">Click "Continue with Google"</div>
+                <div class="ds-desc">On the welcome screen or the account button (top-right). A Google sign-in popup appears — pick your account.</div>
+              </div>
+            </div>
+            <div class="drive-step">
+              <div class="ds-num">2</div>
+              <div class="ds-content">
+                <div class="ds-title">File is created automatically</div>
+                <div class="ds-desc">The app finds or creates <strong>habittrack-data.json</strong> in your Google Drive instantly. No manual steps.</div>
+              </div>
+            </div>
+            <div class="drive-step">
+              <div class="ds-num">3</div>
+              <div class="ds-content">
+                <div class="ds-title">Every change saves in real time</div>
+                <div class="ds-desc">Tick a habit, add a task, change a month — all synced to Drive within 1.5 seconds automatically.</div>
+              </div>
+            </div>
+            <div class="drive-step">
+              <div class="ds-num">4</div>
+              <div class="ds-content">
+                <div class="ds-title">Open on any device</div>
+                <div class="ds-desc">Phone, tablet, work laptop — sign in with the same Google account and all your data loads instantly.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SYNC DIAGRAM -->
+    <div class="sync-diagram reveal">
+      <div class="sd-title">HOW DATA FLOWS BETWEEN YOUR DEVICES</div>
+      <div class="sd-flow">
+        <div class="sd-node">
+          <div class="sd-icon">📱</div>
+          <div class="sd-label">Phone</div>
+          <div class="sd-sub">Chrome / Safari</div>
+        </div>
+        <div class="sd-arrow">
+          <div class="sd-line"></div>
+          <div class="sd-arrow-icon">⇄</div>
+        </div>
+        <div class="sd-node drive-node">
+          <div class="sd-icon">
+            <svg width="32" height="28" viewBox="0 0 87.3 78"><path d="m6.6 66.85 3.85 6.65c.8 1.4 1.95 2.5 3.3 3.3l13.75-23.8h-27.5c0 1.55.4 3.1 1.2 4.5z" fill="#0066da"/><path d="m43.65 25-13.75-23.8c-1.35.8-2.5 1.9-3.3 3.3l-25.4 44a9.06 9.06 0 0 0 -1.2 4.5h27.5z" fill="#00ac47"/><path d="m73.55 76.8c1.35-.8 2.5-1.9 3.3-3.3l1.6-2.75 7.65-13.25c.8-1.4 1.2-2.95 1.2-4.5h-27.502l5.852 11.5z" fill="#ea4335"/><path d="m43.65 25 13.75-23.8c-1.35-.8-2.9-1.2-4.5-1.2h-18.5c-1.6 0-3.15.45-4.5 1.2z" fill="#00832d"/><path d="m59.8 53h-32.3l-13.75 23.8c1.35.8 2.9 1.2 4.5 1.2h50.8c1.6 0 3.15-.45 4.5-1.2z" fill="#2684fc"/><path d="m73.4 26.5-12.7-22c-.8-1.4-1.95-2.5-3.3-3.3l-13.75 23.8 16.15 28h27.45c0-1.55-.4-3.1-1.2-4.5z" fill="#ffba00"/></svg>
+          </div>
+          <div class="sd-label">Google Drive</div>
+          <div class="sd-sub">habittrack-data.json</div>
+        </div>
+        <div class="sd-arrow">
+          <div class="sd-line"></div>
+          <div class="sd-arrow-icon">⇄</div>
+        </div>
+        <div class="sd-node">
+          <div class="sd-icon">💻</div>
+          <div class="sd-label">Laptop</div>
+          <div class="sd-sub">Any Browser</div>
+        </div>
+        <div class="sd-arrow">
+          <div class="sd-line"></div>
+          <div class="sd-arrow-icon">⇄</div>
+        </div>
+        <div class="sd-node">
+          <div class="sd-icon">🖥</div>
+          <div class="sd-label">Desktop</div>
+          <div class="sd-sub">Work / Home</div>
+        </div>
+      </div>
+      <div class="sd-realtime">Changes sync in <span>~1.5 seconds</span> · Works on all browsers · No app install needed</div>
+    </div>
+
+    <!-- DETAILED HOW-TO -->
+    <div class="gdrive-howto reveal">
+      <div class="gdrive-howto-head">
+        <div class="gdrive-logo">
+          <svg width="28" height="28" viewBox="0 0 87.3 78"><path d="m6.6 66.85 3.85 6.65c.8 1.4 1.95 2.5 3.3 3.3l13.75-23.8h-27.5c0 1.55.4 3.1 1.2 4.5z" fill="#0066da"/><path d="m43.65 25-13.75-23.8c-1.35.8-2.5 1.9-3.3 3.3l-25.4 44a9.06 9.06 0 0 0 -1.2 4.5h27.5z" fill="#00ac47"/><path d="m73.55 76.8c1.35-.8 2.5-1.9 3.3-3.3l1.6-2.75 7.65-13.25c.8-1.4 1.2-2.95 1.2-4.5h-27.502l5.852 11.5z" fill="#ea4335"/><path d="m43.65 25 13.75-23.8c-1.35-.8-2.9-1.2-4.5-1.2h-18.5c-1.6 0-3.15.45-4.5 1.2z" fill="#00832d"/><path d="m59.8 53h-32.3l-13.75 23.8c1.35.8 2.9 1.2 4.5 1.2h50.8c1.6 0 3.15-.45 4.5-1.2z" fill="#2684fc"/><path d="m73.4 26.5-12.7-22c-.8-1.4-1.95-2.5-3.3-3.3l-13.75 23.8 16.15 28h27.45c0-1.55-.4-3.1-1.2-4.5z" fill="#ffba00"/></svg>
+        </div>
+        <div>
+          <div class="gdrive-howto-title">Google Drive Sync — Complete Guide</div>
+          <div class="gdrive-howto-sub">Everything you need to know about saving and syncing your data</div>
+        </div>
+      </div>
+      <div class="gdrive-howto-body">
+        <div>
+          <div class="gdrive-col-title">Saving to Drive</div>
+          <div class="gdrive-step-list">
+            <div class="gdrive-step">
+              <div class="gdrive-step-num">1</div>
+              <div class="gdrive-step-content">
+                <div class="gdrive-step-title">Auto-save on every change</div>
+                <div class="gdrive-step-desc">When signed in, every action (ticking a habit, adding a task, navigating months) auto-saves to Drive after 1.5 seconds. No button needed.</div>
+              </div>
+            </div>
+            <div class="gdrive-step">
+              <div class="gdrive-step-num">2</div>
+              <div class="gdrive-step-content">
+                <div class="gdrive-step-title">Manual save via 💾 Save → Google Drive</div>
+                <div class="gdrive-step-desc">Click the Save button in the topbar → choose "Save to Google Drive" to force an immediate save and see a confirmation toast.</div>
+              </div>
+            </div>
+            <div class="gdrive-step">
+              <div class="gdrive-step-num">3</div>
+              <div class="gdrive-step-content">
+                <div class="gdrive-step-title">Save Locally as backup</div>
+                <div class="gdrive-step-desc">Click 💾 Save → "Save Locally" to download the JSON file to your device as a manual backup anytime.</div>
+              </div>
+            </div>
+          </div>
+          <div class="gdrive-note"><strong>File name:</strong> habittrack-data.json — stored in the root of your Google Drive. You can see it, move it, back it up, or share it like any other file.</div>
+        </div>
+        <div>
+          <div class="gdrive-col-title">Loading from Drive</div>
+          <div class="gdrive-step-list">
+            <div class="gdrive-step">
+              <div class="gdrive-step-num">1</div>
+              <div class="gdrive-step-content">
+                <div class="gdrive-step-title">Auto-load on sign in</div>
+                <div class="gdrive-step-desc">When you sign in with Google, the app automatically finds your habittrack-data.json in Drive and loads all your data instantly.</div>
+              </div>
+            </div>
+            <div class="gdrive-step">
+              <div class="gdrive-step-num">2</div>
+              <div class="gdrive-step-content">
+                <div class="gdrive-step-title">Import via 📂 Open → Google Drive</div>
+                <div class="gdrive-step-desc">Click the Open button → "Import from Google Drive" to manually pull the latest version from your Drive at any time.</div>
+              </div>
+            </div>
+            <div class="gdrive-step">
+              <div class="gdrive-step-num">3</div>
+              <div class="gdrive-step-content">
+                <div class="gdrive-step-title">Switch accounts</div>
+                <div class="gdrive-step-desc">Click the account avatar (top-right) → click any listed account to switch. Each account has its own separate Drive file.</div>
+              </div>
+            </div>
+          </div>
+          <div class="gdrive-note"><strong>New device?</strong> Just open the app and sign in with your Google account. Your entire history loads automatically — habits, completions, tasks, everything.</div>
+        </div>
       </div>
     </div>
   </div>
@@ -348,6 +641,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:48px
           <div class="demo-tabs">
             <div class="demo-tab active" onclick="showDemo('grid',this)">📅 Grid</div>
             <div class="demo-tab" onclick="showDemo('tasks',this)">📋 Tasks</div>
+            <div class="demo-tab" onclick="showDemo('drive',this)">☁ Drive</div>
             <div class="demo-tab" onclick="showDemo('json',this)">💾 JSON</div>
           </div>
         </div>
@@ -360,8 +654,55 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:48px
             <div style="font-size:11px;color:var(--text-dim);margin-bottom:12px;font-family:'Space Mono',monospace;">Weekly tasks — click to complete (demo)</div>
             <div id="miniTasks"></div>
           </div>
+          <div class="demo-screen" id="demo-drive">
+            <div style="font-size:11px;color:var(--text-dim);margin-bottom:12px;font-family:'Space Mono',monospace;">Google Drive Sync — how it looks in the app</div>
+            <div class="drive-demo-screen">
+              <div class="dd-topbar">
+                <div class="dd-logo">◈ HABITTRACK</div>
+                <div class="dd-spacer"></div>
+                <div class="dd-status"><span class="dd-status-dot"></span> ☁ Synced · Aarya</div>
+              </div>
+              <div style="font-size:11px;color:var(--text-dim);margin:10px 0 6px;font-family:'Space Mono',monospace;">Save button dropdown:</div>
+              <div class="dd-save-wrap">
+                <div class="dd-option">
+                  <div class="dd-option-icon">
+                    <svg width="18" height="18" viewBox="0 0 87.3 78"><path d="m6.6 66.85 3.85 6.65c.8 1.4 1.95 2.5 3.3 3.3l13.75-23.8h-27.5c0 1.55.4 3.1 1.2 4.5z" fill="#0066da"/><path d="m43.65 25-13.75-23.8c-1.35.8-2.5 1.9-3.3 3.3l-25.4 44a9.06 9.06 0 0 0 -1.2 4.5h27.5z" fill="#00ac47"/><path d="m73.55 76.8c1.35-.8 2.5-1.9 3.3-3.3l1.6-2.75 7.65-13.25c.8-1.4 1.2-2.95 1.2-4.5h-27.502l5.852 11.5z" fill="#ea4335"/><path d="m43.65 25 13.75-23.8c-1.35-.8-2.9-1.2-4.5-1.2h-18.5c-1.6 0-3.15.45-4.5 1.2z" fill="#00832d"/><path d="m59.8 53h-32.3l-13.75 23.8c1.35.8 2.9 1.2 4.5 1.2h50.8c1.6 0 3.15-.45 4.5-1.2z" fill="#2684fc"/><path d="m73.4 26.5-12.7-22c-.8-1.4-1.95-2.5-3.3-3.3l-13.75 23.8 16.15 28h27.45c0-1.55-.4-3.1-1.2-4.5z" fill="#ffba00"/></svg>
+                  </div>
+                  <div class="dd-option-title">Save to Google Drive</div>
+                  <div class="dd-option-sub">Sync to aaryaaashu00@gmail.com</div>
+                </div>
+                <div class="dd-option green">
+                  <div class="dd-option-icon">📁</div>
+                  <div class="dd-option-title">Save Locally</div>
+                  <div class="dd-option-sub">Download .json file</div>
+                </div>
+              </div>
+              <div style="font-size:11px;color:var(--text-dim);margin:10px 0 6px;font-family:'Space Mono',monospace;">Account switcher (click avatar):</div>
+              <div class="dd-accounts">
+                <div class="dd-acct active">
+                  <div class="dd-avatar">A</div>
+                  <div>
+                    <div class="dd-acct-name">Aarya</div>
+                    <div class="dd-acct-email">aaryaaashu00@gmail.com</div>
+                  </div>
+                  <div class="dd-acct-check">✓</div>
+                </div>
+                <div class="dd-acct">
+                  <div class="dd-avatar" style="background:linear-gradient(135deg,#0d9488,#0891b2);">W</div>
+                  <div>
+                    <div class="dd-acct-name">Work Account</div>
+                    <div class="dd-acct-email">work@company.com</div>
+                  </div>
+                  <div style="font-size:10px;color:var(--text-faint);">Switch</div>
+                </div>
+              </div>
+              <div class="dd-sync-status">
+                <span>☁</span> habittrack-data.json · Last synced just now · Auto-sync enabled
+              </div>
+            </div>
+          </div>
           <div class="demo-screen" id="demo-json">
-            <div style="font-size:11px;color:var(--text-dim);margin-bottom:10px;font-family:'Space Mono',monospace;">Your data as a portable JSON file</div>
+            <div style="font-size:11px;color:var(--text-dim);margin-bottom:10px;font-family:'Space Mono',monospace;">Your data as a portable JSON file — stored in Google Drive</div>
             <div class="json-block" id="jsonPreview"></div>
             <button class="copy-btn" onclick="copyJson()">📋 Copy JSON</button>
           </div>
@@ -384,22 +725,22 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:48px
       <div class="step reveal">
         <div class="step-num">01</div>
         <div class="step-title">Open the App</div>
-        <div class="step-desc">Visit habittracker-blond.vercel.app or download the single HTML file. No install needed.</div>
+        <div class="step-desc">Visit habittracker-blond.vercel.app. No install needed. Works on any device, any browser.</div>
       </div>
       <div class="step reveal">
         <div class="step-num">02</div>
-        <div class="step-title">Add Your Habits</div>
-        <div class="step-desc">Click ＋ Habit, enter a name and emoji icon. Add as many as you want. Drag to reorder.</div>
+        <div class="step-title">Sign in with Google</div>
+        <div class="step-desc">Click "Continue with Google" on the welcome screen. Your data instantly syncs across all your devices.</div>
       </div>
       <div class="step reveal">
         <div class="step-num">03</div>
-        <div class="step-title">Track Daily</div>
-        <div class="step-desc">Visit the Monthly Grid each day and click your habit cells. Add tasks in the Weekly view.</div>
+        <div class="step-title">Add &amp; Track Habits</div>
+        <div class="step-desc">Add habits with emoji icons, tick them daily in the Monthly Grid, add tasks in the Weekly view.</div>
       </div>
       <div class="step reveal">
         <div class="step-num">04</div>
-        <div class="step-title">Save &amp; Share</div>
-        <div class="step-desc">Click 💾 Save to export your JSON file. Open it on any device to continue right where you left off.</div>
+        <div class="step-title">Syncs Automatically</div>
+        <div class="step-desc">Every change saves to your Google Drive in real time. Open on any device — it's always up to date.</div>
       </div>
     </div>
   </div>
@@ -413,33 +754,32 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:48px
     <div class="reveal">
       <div class="sec-label">Data Portability</div>
       <h2 class="sec-title">Your data lives in <span class="g">one JSON file</span></h2>
-      <p class="sec-sub">No accounts. No cloud. No subscriptions. One file holds everything — habits, completions, tasks, timer data. Share it anywhere.</p>
+      <p class="sec-sub">One file holds everything — habits, completions, tasks. Stored in Google Drive, downloadable anytime, shareable anywhere.</p>
     </div>
     <div class="json-share">
-      <div class="jcard reveal-left">
-        <div class="jcard-icon">💾</div>
-        <div class="jcard-title">Saving Your Data</div>
-        <div class="jcard-desc">All changes auto-save to your browser's localStorage. For permanent storage, hit the Save button to export a <code style="color:var(--green);font-size:12px;">trackerdata.json</code> file you can keep forever.</div>
+      <div class="jcard blue-card reveal-left">
+        <div class="jcard-icon">☁️</div>
+        <div class="jcard-title">Google Drive Sync</div>
+        <div class="jcard-desc">Sign in and your data auto-saves to <code style="color:var(--green);font-size:12px;">habittrack-data.json</code> in your Google Drive after every change. Open the app on any device and it loads automatically.</div>
         <div class="jcard-steps">
-          <div class="jstep"><div class="jstep-n">1</div><div class="jstep-t">Click <b>💾 Save</b> in the top bar at any time</div></div>
-          <div class="jstep"><div class="jstep-n">2</div><div class="jstep-t">Browser downloads <b>main.json</b> to your device</div></div>
-          <div class="jstep"><div class="jstep-n">3</div><div class="jstep-t">Store it in Google Drive, iCloud, Dropbox, USB — anywhere</div></div>
-          <div class="jstep"><div class="jstep-n">4</div><div class="jstep-t">Auto-saved to browser localStorage between sessions</div></div>
+          <div class="jstep"><div class="jstep-n blue">1</div><div class="jstep-t">Sign in with Google on the welcome screen or account button</div></div>
+          <div class="jstep"><div class="jstep-n blue">2</div><div class="jstep-t">File is auto-created in your Drive as <b>habittrack-data.json</b></div></div>
+          <div class="jstep"><div class="jstep-n blue">3</div><div class="jstep-t">Every change syncs in <b>~1.5 seconds</b> — completely hands-free</div></div>
+          <div class="jstep"><div class="jstep-n blue">4</div><div class="jstep-t">Open on phone, laptop, tablet — <b>always in sync</b></div></div>
         </div>
       </div>
       <div class="jcard reveal-right">
-        <div class="jcard-icon">📂</div>
-        <div class="jcard-title">Loading &amp; Sharing</div>
-        <div class="jcard-desc">Send the JSON file to a friend, open it on your phone, or load a colleague's data. Everything transfers perfectly — habits, streaks, tasks, all of it.</div>
+        <div class="jcard-icon">📁</div>
+        <div class="jcard-title">Local File Backup</div>
+        <div class="jcard-desc">Prefer offline? Click 💾 Save → Save Locally to download your data as a JSON file. Open it anytime with the 📂 Open button. Works 100% offline.</div>
         <div class="jcard-steps">
-          <div class="jstep"><div class="jstep-n">1</div><div class="jstep-t">Click <b>📂 Open</b> in the top bar</div></div>
-          <div class="jstep"><div class="jstep-n">2</div><div class="jstep-t">Browse and select any <b>.json</b> file</div></div>
-          <div class="jstep"><div class="jstep-n">3</div><div class="jstep-t">All your habits, completions and tasks load instantly</div></div>
-          <div class="jstep"><div class="jstep-n">4</div><div class="jstep-t">Works on <b>any browser, any device, any OS</b></div></div>
+          <div class="jstep"><div class="jstep-n">1</div><div class="jstep-t">Click <b>💾 Save → Save Locally</b> in the top bar</div></div>
+          <div class="jstep"><div class="jstep-n">2</div><div class="jstep-t">Browser downloads <b>habittrack-data.json</b> to your device</div></div>
+          <div class="jstep"><div class="jstep-n">3</div><div class="jstep-t">Store it in Dropbox, iCloud, USB — wherever you want</div></div>
+          <div class="jstep"><div class="jstep-n">4</div><div class="jstep-t">Click <b>📂 Open → Open Local File</b> to load it back anytime</div></div>
         </div>
       </div>
     </div>
-    <!-- JSON structure -->
     <div class="reveal" style="margin-top:28px;">
       <div style="font-family:'Space Mono',monospace;font-size:12px;color:var(--text-dim);margin-bottom:10px;">JSON File Structure</div>
       <div class="json-block">
@@ -454,13 +794,13 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:48px
 
 <div class="divider"></div>
 
-<!-- ══════════════ CUSTOMIZATION ══════════════ -->
+<!-- ══════════════ USAGE GUIDE ══════════════ -->
 <section>
   <div class="wrap">
     <div class="reveal">
       <div class="sec-label">Customization</div>
       <h2 class="sec-title">Make it <span class="g">completely yours</span></h2>
-      <p class="sec-sub">Every habit, icon, schedule and color can be tailored. Here's what you can customize:</p>
+      <p class="sec-sub">Every habit, icon, schedule and color can be tailored. Here's what you can do:</p>
     </div>
     <div class="usage-grid">
       <div class="ug-card reveal-left">
@@ -468,45 +808,41 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:48px
         <div class="ug-body">
           <div class="ug-step"><div><b>Add a habit:</b> Click <span class="kbd">＋ Habit</span> in the top bar on the Habits tab. Enter a name and an emoji icon.</div></div>
           <div class="ug-step"><div><b>Edit a habit:</b> Go to My Habits → click <span class="kbd">✏ Edit</span> next to any habit. Change name or icon.</div></div>
-          <div class="ug-step"><div><b>Delete a habit:</b> Click <span class="kbd">✕</span> on any habit card. Completion history is preserved in your JSON.</div></div>
+          <div class="ug-step"><div><b>Delete a habit:</b> Click <span class="kbd">✕</span> on any habit card. History is preserved in your JSON.</div></div>
           <div class="ug-step"><div><b>Reorder habits:</b> Drag the <span class="kbd">⠿</span> handle up or down. Order reflects in all views instantly.</div></div>
         </div>
       </div>
       <div class="ug-card reveal-right">
         <div class="ug-head"><div class="ug-icon">📋</div><div class="ug-title">Managing Tasks</div></div>
         <div class="ug-body">
-          <div class="ug-step"><div><b>Add a task:</b> In Weekly view, click the <span class="kbd">+</span> button on any day card, type your task, press Enter.</div></div>
+          <div class="ug-step"><div><b>Add a task:</b> In Weekly view, click the <span class="kbd">+</span> on any day card, type your task, press Enter.</div></div>
           <div class="ug-step"><div><b>Complete a task:</b> Click the task row to toggle its checkbox. Completed tasks get strikethrough.</div></div>
-          <div class="ug-step"><div><b>Delete a task:</b> Hover the task row — a red <span class="kbd">✕</span> appears on the right. Click to remove.</div></div>
+          <div class="ug-step"><div><b>Delete a task:</b> Hover the task row — a red <span class="kbd">✕</span> appears. Click to remove.</div></div>
           <div class="ug-step"><div><b>View progress:</b> The donut chart on each day card shows task completion % live.</div></div>
         </div>
       </div>
-      <div class="ug-card reveal-left">
-        <div class="ug-head"><div class="ug-icon">⏱</div><div class="ug-title">Using Timers</div></div>
+      <div class="ug-card blue-ug reveal-left">
+        <div class="ug-head"><div class="ug-icon">☁️</div><div class="ug-title">Google Drive Sync</div></div>
         <div class="ug-body">
-          <div class="ug-step"><div><b>Global timer:</b> Click <span class="kbd">⏱ Timer</span> in the topbar. Choose a preset or enter custom H:M:S. A ring countdown appears.</div></div>
-          <div class="ug-step"><div><b>Habit timer:</b> On the Habits page, click the <span class="kbd">⏱</span> icon on any habit for a per-habit popup.</div></div>
-          <div class="ug-step"><div><b>Clock alarm:</b> Set a specific time (e.g., 07:00 AM) — the app fires a sound notification when reached.</div></div>
-          <div class="ug-step"><div><b>Countdown:</b> Choose presets 5–60 min or custom duration. Ring animates down to zero then sounds.</div></div>
+          <div class="ug-step"><div><b>Sign in:</b> Click <span class="kbd blue">Continue with Google</span> on welcome screen or the account avatar (top-right).</div></div>
+          <div class="ug-step"><div><b>Auto-save:</b> Every change auto-saves to Drive within ~1.5 seconds. Watch the status bar turn <span style="color:var(--blue);">☁ Synced</span>.</div></div>
+          <div class="ug-step"><div><b>Switch accounts:</b> Click the account avatar → click any account in the list. Each has its own Drive file.</div></div>
+          <div class="ug-step"><div><b>New device:</b> Just open the app and sign in — all data loads from Drive automatically.</div></div>
         </div>
       </div>
       <div class="ug-card reveal-right">
-        <div class="ug-head"><div class="ug-icon">📊</div><div class="ug-title">Reading Charts</div></div>
+        <div class="ug-head"><div class="ug-icon">⏱</div><div class="ug-title">Using Timers</div></div>
         <div class="ug-body">
-          <div class="ug-step"><div><b>Daily Progress:</b> Bar/line chart of daily completion % across the current month.</div></div>
-          <div class="ug-step"><div><b>Weekly Progress:</b> Average completion per week, great for spotting slumps.</div></div>
-          <div class="ug-step"><div><b>Per Habit:</b> Side-by-side bars showing which habits you're nailing vs. neglecting.</div></div>
-          <div class="ug-step"><div><b>Overall Stats:</b> Pie chart showing total completed vs. remaining across the month.</div></div>
+          <div class="ug-step"><div><b>Global timer:</b> Click <span class="kbd">⏱ Timer</span> in the topbar. Choose a preset or enter custom H:M:S.</div></div>
+          <div class="ug-step"><div><b>Habit timer:</b> On the Habits page, click the <span class="kbd">⏱</span> icon on any habit for a per-habit popup.</div></div>
+          <div class="ug-step"><div><b>Clock alarm:</b> Set a specific time (e.g., 07:00 AM) — fires a sound notification when reached.</div></div>
+          <div class="ug-step"><div><b>Countdown:</b> Choose presets 5–60 min or custom duration. Ring animates down to zero then sounds.</div></div>
         </div>
       </div>
     </div>
-
-    <!-- Customization table -->
     <div class="reveal" style="margin-top:20px;">
       <table class="custom-table">
-        <thead><tr>
-          <th>JSON Key</th><th>Type</th><th>What it controls</th>
-        </tr></thead>
+        <thead><tr><th>JSON Key</th><th>Type</th><th>What it controls</th></tr></thead>
         <tbody>
           <tr><td class="ct-key">habits[].name</td><td class="ct-type">string</td><td class="ct-desc">The display name of the habit shown in all views</td></tr>
           <tr><td class="ct-key">habits[].icon</td><td class="ct-type">string</td><td class="ct-desc">Emoji icon (e.g. "🏃") shown next to the habit name</td></tr>
@@ -530,9 +866,13 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:48px
       <p class="sec-sub">Whether you're a student, professional, athlete, or parent — HabitTrack adapts to your lifestyle.</p>
     </div>
     <div class="benefit-grid">
+      <div class="benefit blue-benefit reveal">
+        <div class="benefit-ico">☁️</div>
+        <div><div class="benefit-name">Syncs Everywhere</div><div class="benefit-desc">Sign in with Google and your data follows you. Phone, laptop, tablet, work computer — always the same, always up to date. No manual transfers.</div></div>
+      </div>
       <div class="benefit reveal">
         <div class="benefit-ico">🔒</div>
-        <div><div class="benefit-name">100% Private</div><div class="benefit-desc">Your data never leaves your device unless you explicitly share it. No accounts, no tracking, no analytics. Open source and auditable.</div></div>
+        <div><div class="benefit-name">100% Private</div><div class="benefit-desc">Data goes directly to YOUR Google Drive, not our servers. We never see your habits. You own and control everything completely.</div></div>
       </div>
       <div class="benefit reveal">
         <div class="benefit-ico">⚡</div>
@@ -540,19 +880,15 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:48px
       </div>
       <div class="benefit reveal">
         <div class="benefit-ico">🌐</div>
-        <div><div class="benefit-name">Works Offline</div><div class="benefit-desc">Download the single HTML file and open it directly in your browser — no internet required. Perfect for travel, flights, or unreliable connections.</div></div>
-      </div>
-      <div class="benefit reveal">
-        <div class="benefit-ico">📱</div>
-        <div><div class="benefit-name">Cross-Device</div><div class="benefit-desc">Your JSON file works everywhere — Windows, Mac, Linux, iOS, Android. Just email yourself the file or put it in cloud storage.</div></div>
+        <div><div class="benefit-name">Works Offline Too</div><div class="benefit-desc">No internet? No problem. Data is also in localStorage. Changes sync back to Drive automatically when you reconnect.</div></div>
       </div>
       <div class="benefit reveal">
         <div class="benefit-ico">♾️</div>
-        <div><div class="benefit-name">Unlimited Habits</div><div class="benefit-desc">No paywalls, no "premium" plan. Add as many habits, tasks, and months of data as you want — forever, for free.</div></div>
+        <div><div class="benefit-name">Unlimited. Free. Forever.</div><div class="benefit-desc">No paywalls, no "premium" plan, no sync limits. Add as many habits, tasks, and months of data as you want — always free.</div></div>
       </div>
       <div class="benefit reveal">
         <div class="benefit-ico">🎨</div>
-        <div><div class="benefit-name">Beautiful &amp; Focused</div><div class="benefit-desc">Dark-mode first design that's easy on the eyes. Built for long-term daily use — no distractions, no clutter, just your data.</div></div>
+        <div><div class="benefit-name">Beautiful &amp; Focused</div><div class="benefit-desc">Dark-mode first design built for long-term daily use. No distractions, no clutter — just your data and your progress.</div></div>
       </div>
     </div>
   </div>
@@ -563,14 +899,15 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:48px
 <!-- ══════════════ FOOTER ══════════════ -->
 <footer>
   <div class="footer-logo">◈ HABITTRACK</div>
-  <div class="footer-sub">Build streaks. Track progress. Win every day.</div>
+  <div class="footer-sub">Build streaks. Track progress. Sync everywhere. Win every day.</div>
   <div class="footer-links">
     <a class="fl" href="https://habittracker-blond.vercel.app/" target="_blank">🚀 Live App</a>
     <a class="fl" href="#features">✨ Features</a>
+    <a class="fl" href="#drive">☁ Drive Sync</a>
     <a class="fl" href="#demo">👀 Demo</a>
     <a class="fl" href="#json">💾 Data &amp; Sharing</a>
   </div>
-  <div style="font-size:11px;color:var(--text-faint);margin-top:24px;">Made with ♥ · Zero dependencies · Open Source</div>
+  <div style="font-size:11px;color:var(--text-faint);margin-top:24px;">Made with ♥ · Google Drive Sync · Zero tracking · Open Source</div>
 </footer>
 
 <script>
@@ -607,7 +944,7 @@ function renderLiveDemo() {
     d.innerHTML = `<span class="ldh-ico">${h.icon}</span><div class="ldh-name">${h.name}</div><div class="ldh-status">${ticked.has(h.id) ? '✓ Done' : '○ Pending'}</div>`;
     d.onclick = () => {
       if(ticked.has(h.id)) ticked.delete(h.id); else ticked.add(h.id);
-      renderLiveDemo(); updateLiveProgress();
+      renderLiveDemo();
     };
     container.appendChild(d);
   });
@@ -621,19 +958,15 @@ function updateLiveProgress() {
   document.getElementById('ldCount').textContent = `${ticked.size} / ${demoHabits.length} done`;
 }
 
-// Date display
 const now = new Date();
 document.getElementById('liveDate').textContent = now.toLocaleDateString('en-US',{weekday:'long',month:'short',day:'numeric'});
 renderLiveDemo();
 
 // ── MINI GRID DEMO ──
 function renderMiniGrid() {
-  const habitColors = ['#4ade80','#60a5fa','#f472b6','#fb923c','#a78bfa'];
   let html = '';
-  ['⏰ Wake 5am','💪 Gym','📚 Read','💰 Budget'].forEach((h,hi) => {
-    html += `<div style="margin-bottom:12px;">
-      <div style="font-size:12px;font-weight:600;margin-bottom:6px;color:var(--text-dim);">${h}</div>
-      <div class="mini-days">`;
+  ['⏰ Wake 5am','💪 Gym','📚 Read','💰 Budget'].forEach(h => {
+    html += `<div style="margin-bottom:12px;"><div style="font-size:12px;font-weight:600;margin-bottom:6px;color:var(--text-dim);">${h}</div><div class="mini-days">`;
     for(let d=1;d<=14;d++){
       const done = Math.random() > 0.35;
       html += `<div class="mday${done?' done':''}" onclick="this.classList.toggle('done')" title="Day ${d}">${done?'':d}</div>`;
@@ -653,7 +986,7 @@ function renderMiniTasks() {
     {t:'Meditate 10 minutes',done:false},
   ];
   let html = '';
-  tasks.forEach((task, i) => {
+  tasks.forEach(task => {
     html += `<div class="mini-task" onclick="this.querySelector('.task-check').classList.toggle('on');this.querySelector('.task-txt').classList.toggle('done')">
       <div class="task-check${task.done?' on':''}"></div>
       <div class="task-txt${task.done?' done':''}">${task.t}</div>
@@ -691,11 +1024,16 @@ function showDemo(tab, btn) {
   btn.classList.add('active');
 }
 
-// Scroll-based pill navigation
 document.querySelectorAll('.pill').forEach(p => {
   p.addEventListener('click', () => {
-    const map = {'📅 Monthly Grid':'#demo','📋 Weekly Tasks':'#demo','📊 Visual Charts':'#features','⏱ Focus Timer':'#features','💾 JSON Portable':'#json','🎯 Habit Manager':'#features'};
-    const target = map[p.textContent];
+    const label = p.textContent.trim();
+    const map = {
+      '📅 Monthly Grid':'#demo','📋 Weekly Tasks':'#demo',
+      '📊 Visual Charts':'#features','⏱ Focus Timer':'#features',
+      '☁ Google Drive Sync':'#drive','🔐 Any Google Account':'#drive',
+      '🎯 Habit Manager':'#features','🔔 Alarm System':'#features'
+    };
+    const target = map[label];
     if(target) document.querySelector(target).scrollIntoView({behavior:'smooth'});
   });
 });
